@@ -2,6 +2,7 @@ package Server.config;
 
 public class ConfigurationManager {
     private static ConfigurationManager myConfigurationManager;
+    private static Configuration myCurrentConfiguration;
 
     private ConfigurationManager() {
     }
@@ -22,6 +23,7 @@ public class ConfigurationManager {
      * retuns curent loaded configurations
      * */
     public void getCurrentConfig(){
+
 
     }
 }
