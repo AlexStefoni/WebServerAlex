@@ -1,4 +1,4 @@
-package Server.config.util;
+package Server.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.*;

@@ -2,6 +2,7 @@ package Server;
 
 import Server.config.Configuration;
 import Server.config.ConfigurationManager;
+import Server.core.ServerListenerThread;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,32 +28,9 @@ public class WebServer {
         System.out.println("using webroot"+ conf.getWebroot());
 
         try {
-            ServerSocket serverSocket = new ServerSocket(conf.getPort());
-            Socket socket = serverSocket.accept();
-
-            InputStream inputStream = socket.getInputStream();
-            OutputStream outputStream = socket.getOutputStream();
-            // TODO reading
-
-
-            // TODO writing
-            final String crlf ="\n\r";
-            String html = "<html><head><title>Simple Server</title></head><body><ch1>this page is a test</ch1></body></html>";
-            String response =
-                    "HTTP/1.1 200 OK"//status line :HTTP_VERSION RESPONSE_CODE RESPONSE_MESSAGE
-                    +crlf
-                    +"Content-Lenght"+html.getBytes().length+crlf+crlf
-                    +crlf
-                    +html
-                    +crlf+crlf;
-
-            outputStream.write(response.getBytes());
-            inputStream.close();
-            outputStream.close();
-            socket.close();
-            serverSocket.close();
-
-        } catch (IOException e) {
+            ServerListenerThread serverListenerThread = new ServerListenerThread(conf.getPort(), conf.getWebroot());
+            serverListenerThread.start();
+        }catch (IOException e){
             e.printStackTrace();
         }
     }

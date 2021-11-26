@@ -1,6 +1,6 @@
 package Server.config;
 
-import Server.config.util.Json;
+import Server.util.Json;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 
