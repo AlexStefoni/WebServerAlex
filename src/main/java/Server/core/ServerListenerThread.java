@@ -10,11 +10,13 @@ public class ServerListenerThread extends  Thread{
     private int port;
     private String webroot;
     private ServerSocket serverSocket;
+    String html ;
 
-    public ServerListenerThread(int port,String webroot) throws IOException {
+    public ServerListenerThread(int port,String webroot,String html) throws IOException {
         this.port=port;
         this.webroot=webroot;
         this.serverSocket = new ServerSocket(this.port);
+        this.html=html;
     }
 
     @Override
@@ -22,7 +24,7 @@ public class ServerListenerThread extends  Thread{
         try {
             while(serverSocket.isBound() && !serverSocket.isClosed()) {
                 Socket socket = serverSocket.accept();
-                ServerWorkerThread workerThread = new ServerWorkerThread(socket);
+                ServerWorkerThread workerThread = new ServerWorkerThread(socket,html);
                 workerThread.start();
             }
             //serverSocket.close();
