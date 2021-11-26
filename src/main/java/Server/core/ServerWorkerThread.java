@@ -10,12 +10,20 @@ public class ServerWorkerThread extends Thread{
     public ServerWorkerThread(Socket socket){
         this.socket=socket;
     }
+
+    InputStream inputStream =null;
+    OutputStream outputStream=null;
+
     @Override
     public void run() {
 
         try {
-            InputStream inputStream = socket.getInputStream();
-            OutputStream outputStream = socket.getOutputStream();
+            inputStream = socket.getInputStream();
+            outputStream = socket.getOutputStream();
+
+
+
+
             // TODO reading
 
 
@@ -31,11 +39,31 @@ public class ServerWorkerThread extends Thread{
                             + crlf + crlf;
 
             outputStream.write(response.getBytes());
-            inputStream.close();
-            outputStream.close();
-            socket.close();
+
         }catch (IOException e){
             e.printStackTrace();
+        }finally {
+            if(inputStream!=null){
+                try {
+                    inputStream.close();
+                } catch (IOException e) {}
+            }
+
+
+            if(outputStream!=null){
+                try {
+                    outputStream.close();
+                } catch (IOException e) {}
+            }
+
+
+
+            if(socket!=null){
+                try {
+                    socket.close();
+                } catch (IOException e) {}
+            }
+
         }
     }
 }

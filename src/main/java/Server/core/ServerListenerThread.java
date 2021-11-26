@@ -29,6 +29,12 @@ public class ServerListenerThread extends  Thread{
 
         } catch (IOException e) {
             e.printStackTrace();
+        }finally {
+            if(serverSocket!=null){
+                try {
+                    serverSocket.close();
+                } catch (IOException e) {}
+            }
         }
     }
 }
