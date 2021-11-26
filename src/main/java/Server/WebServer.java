@@ -24,6 +24,8 @@ public class WebServer {
         ConfigurationManager.getInstance().loadConfigFile("src/main/resources/http.json");
         Configuration conf= ConfigurationManager.getInstance().getCurrentConfig();
 
+
+
         System.out.println("using port"+ conf.getPort());
         System.out.println("using webroot"+ conf.getWebroot());
 

@@ -7,7 +7,6 @@ public class HttpConfurationException extends  RuntimeException {
     public HttpConfurationException(String message) {
         super(message);
     }
-
     public HttpConfurationException(String message, Throwable cause) {
         super(message, cause);
     }

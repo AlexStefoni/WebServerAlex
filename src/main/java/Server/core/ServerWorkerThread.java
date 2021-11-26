@@ -1,9 +1,9 @@
 package Server.core;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.Socket;
+import java.util.Locale;
+import java.util.StringTokenizer;
 
 public class ServerWorkerThread extends Thread{
     private Socket socket;
@@ -22,9 +22,13 @@ public class ServerWorkerThread extends Thread{
         try {
             inputStream = socket.getInputStream();
             outputStream = socket.getOutputStream();
-
-
-
+            /*
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            String input= in.readLine();
+            StringTokenizer parse= new StringTokenizer(input);
+            String method = parse.nextToken().toUpperCase();
+            System.out.println(method);
+            */
 
             // TODO reading
 
