@@ -5,6 +5,9 @@ SVV-project
 Scuzati de proiectul inatarziat, ma descurc foarte greu la partea de webserver intrucat nu am mai facut asa ceva si dupa nu stiu cate tutoriale am reusit sa intleg ceva am facut doar o pagina statica intrucat nu am reusit sa inteleg indeplin cum functioneaza requesturile si linkurile , dar tutorialu pe care l am urmat ma ajutat sa implementez intr o masura un request parser si sa il testez.
 
 am folosit maven cu dependente pentru jsoup,mochito,junit5,jackson
+using open-jdk 17 with intelij
+mockito-core 3.12.4
+the RELEASE version of junit jupiter
 
 
 
