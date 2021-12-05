@@ -19,7 +19,13 @@ public class ServerListenerThread extends  Thread{
         this.html=html;
         this.status=status;
     }
+    public int serverGetPort(){
+        return this.port;
+    }
 
+    public String serverGetWebroot(){
+        return  this.webroot;
+    }
     @Override
     public void run(){
         try {
@@ -46,4 +52,5 @@ public class ServerListenerThread extends  Thread{
             }
         }
     }
+
 }
