@@ -14,6 +14,13 @@ o sa revin aici pt ca am cam grabit toata treaba scuzati
 ![143661561-d4bf6634-a7ae-4e36-b743-d3b274accaef](https://user-images.githubusercontent.com/62361292/144742662-55c48164-ffc1-458a-a15d-71075b016f5d.png)
 
 
+i have a failure when i try to test the websocket but i dont get why 
+![image](https://user-images.githubusercontent.com/62361292/144742710-9e5f7622-5e2d-4e55-9c9e-e3527b00ec56.png)
+
+
+
+
+
 #Static Analysis
 
 
