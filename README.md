@@ -6,20 +6,26 @@ Scuzati de proiectul inatarziat, ma descurc foarte greu la partea de webserver i
 
 am folosit maven cu dependente pentru jsoup,mochito,junit5,jackson
 
-[143661561-d4bf6634-a7ae-4e36-b743-d3b274accaef](https://user-images.githubusercontent.com/62361292/144742527-ece62480-7b0d-4cad-9266-49d5fa7ca2f1.png)
+
 
 
 o sa revin aici pt ca am cam grabit toata treaba scuzati
 
+![143661561-d4bf6634-a7ae-4e36-b743-d3b274accaef](https://user-images.githubusercontent.com/62361292/144742662-55c48164-ffc1-458a-a15d-71075b016f5d.png)
+
+
 #Static Analysis
 
-[143662653-2c9f3d6b-8896-4151-bc2f-7e1329b0628d](https://user-images.githubusercontent.com/62361292/144742546-6014e7c9-3d72-4c69-a55e-f9097f6b0987.png)
+
+![143662653-2c9f3d6b-8896-4151-bc2f-7e1329b0628d](https://user-images.githubusercontent.com/62361292/144742615-66dedc9f-9bdc-4489-93e1-fb04a4cbcfd2.png)
 
 
 i also got an IDE fatal error and i have no idea what it means image
+![143662692-e9414dc4-dfaa-49db-a7f4-344775f3ea8c](https://user-images.githubusercontent.com/62361292/144742631-635ad3c0-3360-4613-af58-fe51ade81f5a.png)
+
 
 #dynamic analisis 
-![143662692-e9414dc4-dfaa-49db-a7f4-344775f3ea8c](https://user-images.githubusercontent.com/62361292/144742568-7a924319-c79c-4885-8089-35763e29991b.png)
+
 ![143663396-75efa568-7857-43c3-8b7a-f993a8420a18](https://user-images.githubusercontent.com/62361292/144742575-72230d48-b50e-48ac-86cc-c39e03705cc8.png)
 ![143663413-d174af6e-1fe6-43e4-816e-a6dd73204c58](https://user-images.githubusercontent.com/62361292/144742579-eae51382-243c-4e10-9ff2-e8264b3b9ff4.png)
 ![143663450-1df6dd57-60fa-4a2e-9821-5508d43dcf0d](https://user-images.githubusercontent.com/62361292/144742581-90761639-bab3-4025-ac10-8283f7f8d84e.png)
