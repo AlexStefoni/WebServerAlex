@@ -22,6 +22,14 @@ i have a failure when i try to test the websocket but i dont get why
 
 
 
+back at it amincercat sa mai fac ceva teste dar nu a isit ceva intrucat calsele principale sunt ServerLisener Si worker care au in componeta doar un construcotr si un overwrite la metoda void run() la care  nu gasesc nici o sursa despre cum as pute o testa am vazut undeva un thread despre cum as putea face treaba altfel dar nu a mers 
+o sa adaug pentru proiectul final niste parsere si clase de utils care vor fii mult mai testabile .
+![image](https://user-images.githubusercontent.com/62361292/144743011-4aa2c66a-ab0d-4e44-a5c8-2f6453c85462.png)
+
+
+
+
+
 
 
 #Static Analysis
