@@ -14,16 +14,18 @@ the RELEASE version of junit jupiter
 
 o sa revin aici pt ca am cam grabit toata treaba scuzati
 
-![143661561-d4bf6634-a7ae-4e36-b743-d3b274accaef](https://user-images.githubusercontent.com/62361292/144742662-55c48164-ffc1-458a-a15d-71075b016f5d.png)
+[143661561-d4bf6634-a7ae-4e36-b743-d3b274accaef](https://user-images.githubusercontent.com/62361292/144742662-55c48164-ffc1-458a-a15d-71075b016f5d.png)
 
 
 i have a failure when i try to test the websocket but i dont get why 
-![image](https://user-images.githubusercontent.com/62361292/144742710-9e5f7622-5e2d-4e55-9c9e-e3527b00ec56.png)
+[image](https://user-images.githubusercontent.com/62361292/144742710-9e5f7622-5e2d-4e55-9c9e-e3527b00ec56.png)
 
 
 
 back at it amincercat sa mai fac ceva teste dar nu a isit ceva intrucat calsele principale sunt ServerLisener Si worker care au in componeta doar un construcotr si un overwrite la metoda void run() la care  nu gasesc nici o sursa despre cum as pute o testa am vazut undeva un thread despre cum as putea face treaba altfel dar nu a mers 
 o sa adaug pentru proiectul final niste parsere si clase de utils care vor fii mult mai testabile .
+update 
+![image](https://user-images.githubusercontent.com/62361292/145144638-a3cbe16c-f0d8-4560-8506-6224753024c7.png)
 
 
 
