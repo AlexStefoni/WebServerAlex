@@ -12,7 +12,7 @@ public class ConfigurationManager {
     private static ConfigurationManager myConfigurationManager;
     private static Configuration myCurrentConfiguration;
 
-    private ConfigurationManager() {
+    public ConfigurationManager() {
     }
     public static ConfigurationManager getInstance(){
         if(myConfigurationManager==null)
@@ -47,9 +47,13 @@ public class ConfigurationManager {
         }
         try {
             myCurrentConfiguration=Json.fromJson(conf,Configuration.class);
+
         } catch (JsonProcessingException e) {
             throw new HttpConfurationException("error pasing the configuratio file internal",e);
+
         }
+
+
     }
     /**
      *
@@ -57,7 +61,7 @@ public class ConfigurationManager {
      * */
     public Configuration getCurrentConfig(){
         if (myCurrentConfiguration==null){
-            throw new HttpConfurationException("no curretn configuration set");
+            throw new HttpConfurationException("no current configuration set");
         }
         return myCurrentConfiguration;
 

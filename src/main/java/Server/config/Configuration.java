@@ -8,15 +8,20 @@ public class Configuration {
         return port;
     }
 
-    public void setPort(int port) throws BadPortException{
-        this.port = port;
+    public boolean setPort(int port) throws BadPortException{
+        if(ConfigUtils.checkPort(port)) {
+            this.port = port;
+            return true;
+        }else this.port=0;
+        return false;
     }
 
-    public String getWebroot() {
-        return webroot;
-    }
+    public String getWebroot() {return webroot;}
 
-    public void setWebroot(String webroot) {
+    public Boolean setWebroot(String webroot) {
+        if(webroot==null)
+            return false;
         this.webroot = webroot;
+        return true;
     }
 }
