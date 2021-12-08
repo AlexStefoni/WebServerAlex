@@ -8,7 +8,7 @@ public class Configuration {
         return port;
     }
 
-    public void setPort(int port) {
+    public void setPort(int port) throws BadPortException{
         this.port = port;
     }
 
