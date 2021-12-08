@@ -66,7 +66,14 @@ class ConfigurationTest {
     }
 
     @Test
-    public void gerConfigFromManager(){
-        
+    public void gerConfigFromManager() throws BadPortException {
+        Configuration  conf = new Configuration ();
+        conf.setWebroot("/tmp");
+        conf.setPort(8080);
+        ConfigurationManager.getInstance().loadConfigFile("src/main/resources/http.json");
+        Configuration  confM= ConfigurationManager.getInstance().getCurrentConfig();
+
+        assertEquals(conf.getPort(),confM.getPort());
+        assertEquals(conf.getWebroot(),confM.getWebroot());
     }
 }
