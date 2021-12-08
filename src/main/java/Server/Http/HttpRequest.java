@@ -1,4 +1,4 @@
-package Http;
+package Server.Http;
 
 public class HttpRequest extends HttpMessage{
     private HttpMethod method;

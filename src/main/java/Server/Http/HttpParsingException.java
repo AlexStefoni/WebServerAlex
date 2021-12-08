@@ -1,4 +1,4 @@
-package Http;
+package Server.Http;
 
 public class HttpParsingException extends Exception{
     private final HttpStatusCode errorCode;

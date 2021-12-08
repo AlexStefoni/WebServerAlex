@@ -1,4 +1,4 @@
-package Http;
+package Server.Http;
 
 public class BadHttpVersionException extends Exception{
 }

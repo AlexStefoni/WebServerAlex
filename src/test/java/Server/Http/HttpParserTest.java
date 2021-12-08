@@ -1,4 +1,4 @@
-package Http;
+package Server.Http;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
