@@ -8,6 +8,8 @@ public class HttpParsingException extends Exception{
         this.errorCode = errorCode;
     }
 
+
+
     public HttpStatusCode getErrorCode() {
         return errorCode;
     }

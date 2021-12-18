@@ -76,4 +76,15 @@ class ConfigurationTest {
         assertEquals(conf.getPort(),confM.getPort());
         assertEquals(conf.getWebroot(),confM.getWebroot());
     }
+
+
+    @Test
+    public void mockConfigSet() throws BadPortException {
+
+        Configuration  conf = mock(Configuration.class);
+
+        verify(conf,never()).setPort(8080);
+        verify(conf,never()).setWebroot(" ");
+
+    }
 }
