@@ -11,6 +11,7 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+
     </properties>
 
     <dependencies>
@@ -45,9 +46,15 @@
             <version>3.12.4</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>17</version>
+        </dependency>
 
     </dependencies>
+
+
 
 
 </project>

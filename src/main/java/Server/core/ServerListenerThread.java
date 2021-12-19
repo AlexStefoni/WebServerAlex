@@ -9,21 +9,19 @@ import java.net.Socket;
 import static Server.core.ServerStatus.status;
 
 public class ServerListenerThread extends  Thread{
-    private int port;
+    //private int port;
     private String webroot;
     private ServerSocket serverSocket;
     private String html ;
 
-    public ServerListenerThread(int port,String webroot,String html) throws IOException {
-        this.port=port;
+    public ServerListenerThread(ServerSocket serverSocket,String webroot,String html) throws IOException {
+       // this.port=port;
         this.webroot=webroot;
-        this.serverSocket = new ServerSocket(this.port);
+        this.serverSocket = serverSocket;
         this.html=html;
 
     }
-    public int serverGetPort(){
-        return this.port;
-    }
+
 
     public String serverGetWebroot(){
         return  this.webroot;
@@ -32,10 +30,14 @@ public class ServerListenerThread extends  Thread{
 
     public void run(){
         try {
+            if(serverSocket.isClosed()){
+                //serverSocket=new ServerSocket(8080);
 
-            while(ServerStatus.getStatus() ==1 && serverSocket.isBound() && !serverSocket.isClosed()) {
+            }
+
+            while(serverSocket.isBound() && !serverSocket.isClosed()) {
                 Socket socket = serverSocket.accept();
-                ServerWorkerThread workerThread = new ServerWorkerThread(socket,html,ServerStatus.getStatus());
+                ServerWorkerThread workerThread = new ServerWorkerThread(socket,html);
                 workerThread.start();
             }
 

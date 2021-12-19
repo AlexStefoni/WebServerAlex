@@ -9,10 +9,9 @@ public class ServerWorkerThread extends Thread{
     private Socket socket;
     String html;
     int status;
-    public ServerWorkerThread(Socket socket,String html,int status){
+    public ServerWorkerThread(Socket socket,String html){
         this.html=html;
         this.socket=socket;
-        this.status=status;
     }
 
     InputStream inputStream =null;
@@ -22,17 +21,17 @@ public class ServerWorkerThread extends Thread{
     public void run() {
 
         try {
-            /*
+
             inputStream = socket.getInputStream();
             outputStream = socket.getOutputStream();
-
+            /*
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             String input= in.readLine();
             StringTokenizer parse= new StringTokenizer(input);
             String method = parse.nextToken().toUpperCase();
             System.out.println(method);
-            */
 
+              */
             // TODO reading
 
 
@@ -49,8 +48,6 @@ public class ServerWorkerThread extends Thread{
 
             outputStream.write(response.getBytes());
 
-
-
         }catch (IOException e){
             e.printStackTrace();
         }finally {
@@ -66,6 +63,9 @@ public class ServerWorkerThread extends Thread{
                     outputStream.close();
                 } catch (IOException e) {}
             }
+
+
+
             if(socket!=null){
                 try {
                     socket.close();
