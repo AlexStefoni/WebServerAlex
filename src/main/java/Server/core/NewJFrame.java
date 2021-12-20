@@ -3,6 +3,7 @@ package Server.core;
 import javax.swing.*;
 import java.io.File;
 
+import static java.lang.Integer.parseInt;
 import static java.lang.Math.abs;
 
 /**
@@ -220,19 +221,28 @@ public class NewJFrame extends javax.swing.JFrame {
     private void startStopButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
 
+        if(jTextField2.getText().length()>0) ServerConfig.setPort(parseInt(jTextField2.getText()));
 
-
+        jLabel6.setText(ServerConfig.getPort()+"");
         if(ServerStatus.getStatus()){
 
-
+            maintenanceButton.setEnabled(true);
+            webRootButton.setEnabled(true);
+            jTextField2.setEnabled(true);
             ServerStatus.setStatus(false);
             ServerStatus.setmFlag(false);
         }
-        else {ServerStatus.setStatus(true);ServerStatus.setmFlag(false);}
+        else {
+            maintenanceButton.setEnabled(false);
+            webRootButton.setEnabled(false);
+            jTextField2.setEnabled(false);
+            ServerStatus.setStatus(true);
+            ServerStatus.setmFlag(false);
+        }
 
         if(ServerStatus.getStatus())jLabel4.setText("Running");
         else jLabel4.setText("Stopped");
-        System.out.println(ServerStatus.getStatus() + "got set");
+        //System.out.println(ServerStatus.getStatus() + "got set");
 
         //jLabel4.setText(""+ServerStatus.getStatus());
     }

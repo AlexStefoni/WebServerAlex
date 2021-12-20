@@ -34,7 +34,6 @@ public class ServerWorkerThread extends Thread{
               */
             // TODO reading
 
-
             // TODO writing
             final String crlf = "\n\r";
             //String html = "<html><head><title>Simple Server</title></head><body><ch1>this page is a test</ch1></body></html>";

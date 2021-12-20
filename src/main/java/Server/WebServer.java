@@ -13,6 +13,7 @@ import java.sql.Time;
 import java.util.Scanner;
 import java.util.Timer;
 
+import static Server.core.ServerStatus.ismFlag;
 import static Server.core.ServerStatus.status;
 
 /*
@@ -37,61 +38,37 @@ public class WebServer {
             }
         });
 
-        System.out.println("starting here");
-        ConfigurationManager.getInstance().loadConfigFile("src/main/resources/http.json");
-        Configuration conf= ConfigurationManager.getInstance().getCurrentConfig();
-
-
-
-
-        Scanner scanner = null;
-        try {
-            scanner = new Scanner(new File("src/main/resources/TestSite/a.html"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        String html = scanner.useDelimiter("\\Z").next();
-        scanner.close();
-        serverSocket=new ServerSocket();
-        serverSocket.setReuseAddress(true);
-        //serverSocket.bind(new InetSocketAddress(conf.getPort()));
-        //String html="<html><head><title>Simple Server</title></head><body><ch1>this page is a test</ch1></body></html>";
-
+        String html="";
         ServerStatus.setStatus(false);
         ServerStatus.setmFlag(false);
-        boolean prevStatus=true;
+        boolean prevStatus=false;
         boolean flag =true;
         while (flag) {
 
-            //System.out.println(ServerStatus.getStatus());
+            //System.out.println("stauts: "+ServerStatus.getStatus());
+            //System.out.println("prevstatus: "+prevStatus+"\n");
+            //System.out.println("mflag: "+ServerStatus.ismFlag());
 
-
-            Thread.sleep(2000);
-
-            /*
-            System.out.println("Status : "+ServerStatus.getStatus() );
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-            try {
-                ServerStatus.setStatus( Integer.parseInt(br.readLine()));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            System.out.print("\033[H\033[2J");
-            System.out.flush();
-
-
-             */
             if (ServerStatus.getStatus()==false && prevStatus==true){
                 serverSocket.close();
             }
 
 
-            if (ServerStatus.getStatus()==true && (prevStatus!=false || ServerStatus.ismFlag()==true)){
+            if (ServerStatus.getStatus()==true && (prevStatus==false)){
                 try {
 
+                    if(ServerStatus.ismFlag()){
+                        html=ServerConfig.getMaintenanceHtml();
+                        //System.out.println("flag trigger");
+                    }
+                    else html=ServerConfig.getWebrootHtml();
+
                     serverSocket = new ServerSocket(ServerConfig.getPort());
-                    ServerListenerThread serverListenerThread = new ServerListenerThread(serverSocket, "ServerConfig.getWebroot()", ServerConfig.getWebrootHtml());
+
+
+
+                    ServerListenerThread serverListenerThread = new ServerListenerThread(serverSocket, "ServerConfig.getWebroot()",
+                            html);
                     serverListenerThread.start();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -101,6 +78,7 @@ public class WebServer {
 
 
             prevStatus=ServerStatus.getStatus();
+            Thread.sleep(2000);
         }
     }
 }

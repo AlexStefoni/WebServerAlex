@@ -56,4 +56,20 @@ public class ServerConfig {
         }
         return webRootHtml;
     }
+
+    public static String getMaintenanceHtml(){
+        if(maintenanceRoot!=null){
+
+            Scanner scanner = null;
+            try {
+                scanner = new Scanner(new File(maintenanceRoot));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            maintenanceRootHtml = scanner.useDelimiter("\\Z").next();
+            scanner.close();
+
+        }
+        return maintenanceRootHtml;
+    }
 }
