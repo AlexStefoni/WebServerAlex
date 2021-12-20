@@ -3,6 +3,7 @@ package Server;
 import Server.config.Configuration;
 import Server.config.ConfigurationManager;
 import Server.core.MainFrame;
+import Server.core.NewJFrame;
 import Server.core.ServerListenerThread;
 import Server.core.ServerStatus;
 
@@ -28,12 +29,28 @@ public class WebServer {
 
     public static void main(String[] args) throws IOException {
 
-        SwingUtilities.invokeLater(new Runnable()  {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JFrame jframe= new MainFrame("WebServer" );
-                jframe.setSize(400,400);
-                jframe.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-                jframe.setVisible(true);
+                new NewJFrame().setVisible(true);
             }
         });
 
