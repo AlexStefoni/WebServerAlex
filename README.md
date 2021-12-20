@@ -51,3 +51,32 @@ i also got an IDE fatal error and i have no idea what it means image
 ![143663450-1df6dd57-60fa-4a2e-9821-5508d43dcf0d](https://user-images.githubusercontent.com/62361292/144742581-90761639-bab3-4025-ac10-8283f7f8d84e.png)
 ![143663472-cd248966-1682-43b0-960f-1945f4d62c3b](https://user-images.githubusercontent.com/62361292/144742586-ededd980-b708-4af1-9ab5-b49e31f17574.png)
 ![143663493-a3dbee26-b1c7-45e1-90a8-8e3be6bb89df](https://user-images.githubusercontent.com/62361292/144742595-c2712a46-6103-4525-bf90-e11243bc801a.png)
+
+
+
+
+
+
+
+
+marathon dosent work tried versions from 5.5.0.0 to 2.1.9.0
+the 5.5.0.0 -5.0 dont even open and 4.2.2.0 to 2.1.9.0 dont allow creation of new projects because they require a scripting language witch is unselectable even after instaling both ruby and python 
+
+![image](https://user-images.githubusercontent.com/62361292/146845314-d72448cb-c010-4222-b6e2-22cd1468129e.png)
+![image](https://user-images.githubusercontent.com/62361292/146845342-415f30ef-844f-4f38-939b-478bbfdf9da0.png)
+
+
+
+
+3D View
+
+
+<img width="414" alt="Capt1ure" src="https://user-images.githubusercontent.com/62361292/146845386-7028a50b-56c0-4247-8363-f84606bb231e.PNG"><img width="416" alt="Captaaure" src="https://user-images.githubusercontent.com/62361292/146845388-186d217e-83b7-4bcd-81b3-5c2eb4980b83.PNG">
+
+
+
+
+
+
+
+
