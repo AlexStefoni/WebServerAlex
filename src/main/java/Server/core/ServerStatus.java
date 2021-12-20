@@ -2,16 +2,22 @@ package Server.core;
 
 public class ServerStatus {
 
-    public static int status;
-    public ServerStatus(int status){
-        this.status=status;
+    public static boolean status=false;
+    public static boolean mFlag=false;
+
+    public static boolean ismFlag() {
+        return mFlag;
     }
 
-    public static int getStatus() {
+    public static void setmFlag(boolean mFlag) {
+        ServerStatus.mFlag = mFlag;
+    }
+
+    public static boolean getStatus() {
         return status;
     }
 
-    public static void setStatus(int status) {
+    public static void setStatus(boolean status) {
         ServerStatus.status = status;
     }
 }

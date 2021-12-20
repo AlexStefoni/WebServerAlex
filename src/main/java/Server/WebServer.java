@@ -2,19 +2,18 @@ package Server;
 
 import Server.config.Configuration;
 import Server.config.ConfigurationManager;
-import Server.core.MainFrame;
 import Server.core.NewJFrame;
+import Server.core.ServerConfig;
 import Server.core.ServerListenerThread;
 import Server.core.ServerStatus;
 
-import javax.swing.*;
 import java.io.*;
-import java.net.InetSocketAddress;
 import java.net.ServerSocket;
-import java.net.Socket;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
+import java.sql.Time;
 import java.util.Scanner;
+import java.util.Timer;
+
+import static Server.core.ServerStatus.status;
 
 /*
 *
@@ -27,25 +26,9 @@ import java.util.Scanner;
 public class WebServer {
     static ServerSocket serverSocket=null;
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
 
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -60,18 +43,7 @@ public class WebServer {
 
 
 
-        System.out.println("using port"+ conf.getPort());
-        System.out.println("using webroot"+ conf.getWebroot());
 
-
-        /**
-         * To DO develop on the status
-         * for now
-         * 0-Stopped
-         * 1-Running
-         * 2-Maintenance
-         */
-        int status= 0;
         Scanner scanner = null;
         try {
             scanner = new Scanner(new File("src/main/resources/TestSite/a.html"));
@@ -84,16 +56,23 @@ public class WebServer {
         serverSocket.setReuseAddress(true);
         //serverSocket.bind(new InetSocketAddress(conf.getPort()));
         //String html="<html><head><title>Simple Server</title></head><body><ch1>this page is a test</ch1></body></html>";
+
+        ServerStatus.setStatus(false);
+        ServerStatus.setmFlag(false);
+        boolean prevStatus=true;
         boolean flag =true;
         while (flag) {
 
-            System.out.println(serverSocket.isClosed());
+            //System.out.println(ServerStatus.getStatus());
 
-            if(status==3) return;
-            System.out.println("Status : "+status );
+
+            Thread.sleep(2000);
+
+            /*
+            System.out.println("Status : "+ServerStatus.getStatus() );
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             try {
-                status= Integer.parseInt(br.readLine());
+                ServerStatus.setStatus( Integer.parseInt(br.readLine()));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -101,16 +80,18 @@ public class WebServer {
             System.out.print("\033[H\033[2J");
             System.out.flush();
 
-            if (status==2){
+
+             */
+            if (ServerStatus.getStatus()==false && prevStatus==true){
                 serverSocket.close();
             }
 
 
-            if (status==1) {
+            if (ServerStatus.getStatus()==true && (prevStatus!=false || ServerStatus.ismFlag()==true)){
                 try {
 
-                    serverSocket = new ServerSocket(conf.getPort());
-                    ServerListenerThread serverListenerThread = new ServerListenerThread(serverSocket, conf.getWebroot(), html);
+                    serverSocket = new ServerSocket(ServerConfig.getPort());
+                    ServerListenerThread serverListenerThread = new ServerListenerThread(serverSocket, "ServerConfig.getWebroot()", ServerConfig.getWebrootHtml());
                     serverListenerThread.start();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -118,6 +99,8 @@ public class WebServer {
 
             }
 
+
+            prevStatus=ServerStatus.getStatus();
         }
     }
 }

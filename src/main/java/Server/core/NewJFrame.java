@@ -1,5 +1,10 @@
 package Server.core;
 
+import javax.swing.*;
+import java.io.File;
+
+import static java.lang.Math.abs;
+
 /**
  *
  * @author alexs
@@ -72,6 +77,9 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabel6.setText("-");
 
+        jTextField3.setEditable(false);
+        jTextField4.setEditable(false);
+
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -85,10 +93,25 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel9.setText("Mpage");
 
         webRootButton.setText("jButton1");
+        webRootButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                webRootButtonActionPerformed(evt);
+            }
+        });
 
         mPageButton.setText("jButton1");
+        mPageButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mPageButtonActionPerformed(evt);
+            }
+        });
 
         vallidateButton.setText("validate");
+        vallidateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vallidateButtonActionPerformed(evt);
+            }
+        });
 
         jLabel10.setText("-");
 
@@ -159,16 +182,20 @@ public class NewJFrame extends javax.swing.JFrame {
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(jLabel7))
-                                                .addGap(23, 23, 23)
+                                                .addGap(24, 24, 24)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                         .addComponent(jLabel8)
-                                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(webRootButton))
+                                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(18, 18, 18))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel10)
-                                                .addGap(7, 7, 7)))
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                                .addComponent(jLabel10)
+                                                                .addGap(7, 7, 7))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                                .addComponent(webRootButton)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel9)
                                         .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -191,10 +218,64 @@ public class NewJFrame extends javax.swing.JFrame {
      * TO DO stat stop button
      */
     private void startStopButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+
+
+
+
+        if(ServerStatus.getStatus()){
+
+
+            ServerStatus.setStatus(false);
+            ServerStatus.setmFlag(false);
+        }
+        else {ServerStatus.setStatus(true);ServerStatus.setmFlag(false);}
+
+        if(ServerStatus.getStatus())jLabel4.setText("Running");
+        else jLabel4.setText("Stopped");
+        System.out.println(ServerStatus.getStatus() + "got set");
+
+        //jLabel4.setText(""+ServerStatus.getStatus());
     }
 
     private void maintenanceButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        ServerStatus.setStatus(true);
+        ServerStatus.setmFlag(true);
+        jLabel4.setText("Maintenance");
+    }
+
+    private void webRootButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File("src/main/resources/TestSite/"));
+        int result = fileChooser.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+            jTextField3.setText(selectedFile.getAbsolutePath());
+
+
+            ServerConfig.setWebroot(selectedFile.getAbsolutePath());
+        }
+
+
+    }
+
+    private void mPageButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+
+
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File("src/main/resources/TestSite/"));
+        int result = fileChooser.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+            jTextField4.setText(selectedFile.getAbsolutePath());
+
+            ServerConfig.setMaintenanceRoot(selectedFile.getAbsolutePath());
+        }
+    }
+
+    private void vallidateButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
 
