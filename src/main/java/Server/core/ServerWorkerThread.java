@@ -1,5 +1,7 @@
 package Server.core;
 
+import Server.Http.SafeHttpHeaderReader;
+
 import java.io.*;
 import java.net.Socket;
 import java.util.Locale;
@@ -24,15 +26,20 @@ public class ServerWorkerThread extends Thread{
 
             inputStream = socket.getInputStream();
             outputStream = socket.getOutputStream();
-            /*
-            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            String input= in.readLine();
-            StringTokenizer parse= new StringTokenizer(input);
-            String method = parse.nextToken().toUpperCase();
-            System.out.println(method);
 
-              */
-            // TODO reading
+
+            /*
+            int nr=0;
+            int _byte ;
+            while (((_byte=inputStream.read())>=0)&&((nr<11)&&(((char)_byte)!='\n'))){
+                System.out.print((char) _byte);
+                nr++;
+            }
+            System.out.println();
+            */
+            SafeHttpHeaderReader red =new SafeHttpHeaderReader(inputStream);
+            System.out.println();
+            System.out.println(red.readLine());
 
             // TODO writing
             final String crlf = "\n\r";

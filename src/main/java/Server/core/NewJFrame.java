@@ -1,7 +1,12 @@
 package Server.core;
 
+import Server.config.ServerConfig;
+import Server.config.ServerStatus;
+
 import javax.swing.*;
 import java.io.File;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 import static java.lang.Integer.parseInt;
 import static java.lang.Math.abs;
@@ -54,14 +59,22 @@ public class NewJFrame extends javax.swing.JFrame {
         startStopButton.setText("Start/Stop");
         startStopButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                startStopButtonActionPerformed(evt);
+                try {
+                    startStopButtonActionPerformed(evt);
+                } catch (UnknownHostException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
         maintenanceButton.setText("Maintenance");
         maintenanceButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maintenanceButtonActionPerformed(evt);
+                try {
+                    maintenanceButtonActionPerformed(evt);
+                } catch (UnknownHostException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -218,14 +231,19 @@ public class NewJFrame extends javax.swing.JFrame {
      *
      * TO DO stat stop button
      */
-    private void startStopButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    private void startStopButtonActionPerformed(java.awt.event.ActionEvent evt) throws UnknownHostException {
 
 
         if(jTextField2.getText().length()>0) ServerConfig.setPort(parseInt(jTextField2.getText()));
 
-        jLabel6.setText(ServerConfig.getPort()+"");
+       // jLabel2.setText(InetAddress.getLocalHost().getHostAddress()+"");
+       // System.out.println(InetAddress.getLocalHost().getHostAddress()+"");
+
+
         if(ServerStatus.getStatus()){
 
+            jLabel6.setText("-");
+            jLabel2.setText("-");
             maintenanceButton.setEnabled(true);
             webRootButton.setEnabled(true);
             jTextField2.setEnabled(true);
@@ -233,6 +251,8 @@ public class NewJFrame extends javax.swing.JFrame {
             ServerStatus.setmFlag(false);
         }
         else {
+            jLabel6.setText(ServerConfig.getPort()+"");
+            jLabel2.setText(InetAddress.getLocalHost().getHostAddress()+"");
             maintenanceButton.setEnabled(false);
             webRootButton.setEnabled(false);
             jTextField2.setEnabled(false);
@@ -247,10 +267,12 @@ public class NewJFrame extends javax.swing.JFrame {
         //jLabel4.setText(""+ServerStatus.getStatus());
     }
 
-    private void maintenanceButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    private void maintenanceButtonActionPerformed(java.awt.event.ActionEvent evt) throws UnknownHostException {
         ServerStatus.setStatus(true);
+        jLabel6.setText(ServerConfig.getPort()+"");
         ServerStatus.setmFlag(true);
         jLabel4.setText("Maintenance");
+        jLabel2.setText(InetAddress.getLocalHost().getHostAddress()+"");
     }
 
     private void webRootButtonActionPerformed(java.awt.event.ActionEvent evt) {

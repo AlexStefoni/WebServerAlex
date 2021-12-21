@@ -5,7 +5,7 @@ import static org.mockito.Mockito.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ConfigurationTest {
+class MainTest {
 
     @Test
     public void testBadPort() throws BadPortException {
@@ -85,6 +85,53 @@ class ConfigurationTest {
 
         verify(conf,never()).setPort(8080);
         verify(conf,never()).setWebroot(" ");
+
+    }
+
+    @Test
+    public void checkStatus(){
+
+        assertEquals(false,ServerStatus.getStatus());
+        ServerStatus.setStatus(true);
+        assertEquals(true,ServerStatus.getStatus());
+        ServerStatus.setStatus(false);
+        assertEquals(false,ServerStatus.getStatus());
+    }
+    @Test
+    public void checkMflag(){
+
+        assertEquals(false,ServerStatus.ismFlag());
+        ServerStatus.setmFlag(true);
+        assertEquals(true,ServerStatus.ismFlag());
+        ServerStatus.setmFlag(false);
+        assertEquals(false,ServerStatus.ismFlag());
+    }
+
+    @Test
+    public void checkConfig(){
+        String def1=ServerConfig.getMaintenanceHtml();
+        String def2=ServerConfig.getWebrootHtml();
+
+        String expected="<html><head><title>Simple Server</title></head><body><ch1>page not found</ch1></body></html>";
+        assertEquals(expected,def1);
+        assertEquals(expected,def1);
+    }
+    @Test
+    public void checkConfigFiles(){
+
+       String ref="<html><head><title>Simple Server</title></head><body><ch1>page not found</ch1></body></html>";
+
+       String refroot="src/main/resources/test.html";
+        ServerConfig.setWebroot("src/main/resources/test.html");
+        ServerConfig.setMaintenanceRoot("src/main/resources/test.html");
+        String html1=ServerConfig.getWebrootHtml();
+        String html2=ServerConfig.getMaintenanceHtml();
+
+
+        assertEquals(ref,html1);
+        assertEquals(ref,html2);
+        assertEquals(refroot,ServerConfig.getWebroot());
+        assertEquals(refroot,ServerConfig.getMaintenanceRoot());
 
     }
 }

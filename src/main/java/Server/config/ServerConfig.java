@@ -1,4 +1,4 @@
-package Server.core;
+package Server.config;
 
 import java.io.File;
 import java.io.FileNotFoundException;

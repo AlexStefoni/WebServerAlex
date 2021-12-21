@@ -1,4 +1,4 @@
-package Server.core;
+package Server.config;
 
 public class ServerStatus {
 

@@ -1,20 +1,13 @@
 package Server;
 
-import Server.config.Configuration;
-import Server.config.ConfigurationManager;
+
 import Server.core.NewJFrame;
-import Server.core.ServerConfig;
+import Server.config.ServerConfig;
 import Server.core.ServerListenerThread;
-import Server.core.ServerStatus;
+import Server.config.ServerStatus;
 
 import java.io.*;
 import java.net.ServerSocket;
-import java.sql.Time;
-import java.util.Scanner;
-import java.util.Timer;
-
-import static Server.core.ServerStatus.ismFlag;
-import static Server.core.ServerStatus.status;
 
 /*
 *
