@@ -59,14 +59,17 @@ i also got an IDE fatal error and i have no idea what it means image
 
 
 
+
 marathon dosent work tried versions from 5.5.0.0 to 2.1.9.0
 the 5.5.0.0 -5.0 dont even open and 4.2.2.0 to 2.1.9.0 dont allow creation of new projects because they require a scripting language witch is unselectable even after instaling both ruby and python 
 
 ![image](https://user-images.githubusercontent.com/62361292/146845314-d72448cb-c010-4222-b6e2-22cd1468129e.png)
 ![image](https://user-images.githubusercontent.com/62361292/146845342-415f30ef-844f-4f38-939b-478bbfdf9da0.png)
 
+tried most verisons now of them work found an erasmus student who had it working apparently it only works with java 1.8 proj so converted the project to java 1.8
+and gave it to him to run on marathon did not work i dont know what i can do further.
 
-
+![unknown](https://user-images.githubusercontent.com/62361292/146922403-2f61d4bb-5dc6-41d0-b9c2-edf7e627ddeb.png)
 
 3D View
 
